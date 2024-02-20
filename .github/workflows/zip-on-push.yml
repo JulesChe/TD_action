@@ -1,22 +1,15 @@
-name: Zip and Archive Project on Push
-
+name: Zip repository and put on S3
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
-  build:
+  zip-n-push:
+    name: Zip and Push
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
-    
-    - name: Zip Project
-      run: zip -r project-${{ github.sha }}.zip .
-
-    - name: Upload ZIP as Artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: project-archive
-        path: project-${{ github.sha }}.zip
+      - name: Zip Folder
+        run: |
+          cd ../ # I added this
+          rm -rf <repository_name>.zip
+          zip -r <repository_name>.zip <repository_name> -x ".git/*" ".github/*"
