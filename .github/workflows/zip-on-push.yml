@@ -1,0 +1,28 @@
+name: Zip and Archive Project on Push
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Install Dependencies
+      run: |
+        # Ajoutez ici les commandes pour installer les dépendances de votre projet
+        # Par exemple, si c'est un projet Node.js, vous pourriez avoir:
+        # npm install
+
+    - name: Zip Project
+      run: zip -r project-${{ github.sha }}.zip .
+
+    - name: Upload ZIP as Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: project-archive
+        path: project-${{ github.sha }}.zip
