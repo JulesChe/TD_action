@@ -7,14 +7,18 @@ jobs:
   zip-repository:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Zip Folder
         run: zip -r repository.zip . -x "*.git/*" "*.github/*"
         
       - name: Upload ZIP as Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: project-archive
           path: repository.zip
           if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Build
+          path: dist
