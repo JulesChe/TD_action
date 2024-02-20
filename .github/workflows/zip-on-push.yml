@@ -12,12 +12,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - name: Install Dependencies
-      run: |
-        # Ajoutez ici les commandes pour installer les dépendances de votre projet
-        # Par exemple, si c'est un projet Node.js, vous pourriez avoir:
-        # npm install
-
     - name: Zip Project
       run: zip -r project-${{ github.sha }}.zip .
 
