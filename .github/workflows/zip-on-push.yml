@@ -17,3 +17,4 @@ jobs:
         with:
           name: project-archive
           path: repository.zip
+          if-no-files-found: error
