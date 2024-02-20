@@ -5,11 +5,12 @@ on:
 
 jobs:
   zip-n-push:
-    name: Zip and Push
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+        with:
+          path: <repository_name>
+
       - name: Zip Folder
         run: |
-          cd ../ # I added this
-          rm -rf <repository_name>.zip
-          zip -r <repository_name>.zip <repository_name> -x ".git/*" ".github/*"
+          zip -r <repository_name>.zip <repository_name> -x "<repository_name>/.git/*" "<repository_name>/.github/*"
