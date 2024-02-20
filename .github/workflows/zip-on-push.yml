@@ -16,5 +16,5 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: project-archive
-          path: repository.zip
+          path: repository.zi
           if-no-files-found: error
